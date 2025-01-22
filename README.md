@@ -4,6 +4,8 @@
 
     ## How to Play
 
+    ### Using Git (Recommended)
+
     1.  Clone the repository:
         ```bash
         git clone https://github.com/jiracipika/SpaceCat-Invaders.git
@@ -17,6 +19,17 @@
         npm install && npm start
         ```
     4.  The game will open in your browser.
+
+    ### Without Git
+
+    1.  Download the project as a ZIP file from the GitHub repository page.
+    2.  Extract the ZIP file to a folder on your computer.
+    3.  Open a terminal or command prompt and navigate to the extracted folder.
+    4.  Install dependencies and start the game:
+        ```bash
+        npm install && npm start
+        ```
+    5.  The game will open in your browser.
 
     ## Controls
 
