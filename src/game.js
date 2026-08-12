@@ -1,3 +1,5 @@
+import { getInvaderX } from './game-layout.js';
+
 const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const overlay = document.getElementById('overlay');
@@ -183,7 +185,14 @@ const canvas = document.getElementById('gameCanvas');
       for (let row = 0; row < invaderRows; row++) {
         for (let col = 0; col < invaderCols; col++) {
           invaders.push({
-            x: col * (invaderWidth + invaderPadding) + invaderOffsetLeft,
+            x: getInvaderX({
+              column: col,
+              columns: invaderCols,
+              canvasWidth: canvas.width,
+              invaderWidth,
+              preferredPadding: invaderPadding,
+              sideMargin: invaderOffsetLeft,
+            }),
             y: row * (invaderHeight + invaderPadding) + invaderOffsetTop,
             width: invaderWidth,
             height: invaderHeight,
