@@ -1,16 +1,19 @@
 {
-      "name": "space-invaders-cat",
-      "private": true,
-      "version": "0.0.0",
-      "type": "module",
-      "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "test": "node --test",
-        "preview": "vite preview",
-        "start": "npm run build && npm run preview"
-      },
-      "devDependencies": {
-        "vite": "^4.3.9"
-      }
-    }
+  "name": "space-invaders-cat",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test",
+    "preview": "vite preview",
+    "start": "npm run build && npm run preview"
+  },
+  "devDependencies": {
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "motion": "^14.3.0"
+  }
+}
