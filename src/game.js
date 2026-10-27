@@ -141,7 +141,7 @@ const canvas = document.getElementById('gameCanvas');
         <input type="text" id="playerNameInput" placeholder="Your Name">
         <button id="nameSubmitButton">Submit</button>
       `;
-      document.getElementById('nameSubmitButton').addEventListener('click', () => {
+      const submitName = () => {
         const nameInput = document.getElementById('playerNameInput');
         if (nameInput.value.trim() !== '') {
           playerName = nameInput.value.trim();
@@ -152,6 +152,10 @@ const canvas = document.getElementById('gameCanvas');
         } else {
           alert('Please enter a valid name.');
         }
+      };
+      document.getElementById('nameSubmitButton').addEventListener('click', submitName);
+      document.getElementById('playerNameInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') submitName();
       });
       overlay.style.display = 'flex';
     }
@@ -165,6 +169,11 @@ const canvas = document.getElementById('gameCanvas');
       score = 0;
       gameOver = false;
       invaders = [];
+      bullets.length = 0;
+      invaderDirection = 1;
+      player.x = canvas.width / 2 - 20;
+      player.isMovingLeft = false;
+      player.isMovingRight = false;
       createInvaders();
       document.addEventListener('keydown', handleKeyDown);
       document.addEventListener('keyup', handleKeyUp);
@@ -204,6 +213,9 @@ const canvas = document.getElementById('gameCanvas');
     }
 
     function handleKeyDown(e) {
+      // Listeners stay attached across the game-over overlay; ignore input
+      // there so mashing Fire cannot queue bullets for the next run.
+      if (gameOver) return;
       if (e.code === controls.left) player.isMovingLeft = true;
       if (e.code === controls.right) player.isMovingRight = true;
       if (e.code === controls.fire) fireBullet();
